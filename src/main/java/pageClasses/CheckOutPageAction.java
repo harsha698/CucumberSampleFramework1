@@ -6,13 +6,15 @@ import org.openqa.selenium.support.PageFactory;
 import pageObjects.CheckOutPage;
 import testDataTypes.Customer;
 import utilities.Utils;
+import utilities.Wait;
 
 public class CheckOutPageAction {
 	
 	public CheckOutPage checkOutPage;
+	public WebDriver driver;
 	
 	public CheckOutPageAction(WebDriver driver){
-		
+		this.driver=driver;
 		checkOutPage = new CheckOutPage();
 		PageFactory.initElements(driver, checkOutPage);
 		
@@ -50,11 +52,13 @@ public class CheckOutPageAction {
 	
 	public void selectCountry(String countryname){
 		checkOutPage.drp_BillingCountry.click();
+		Wait.untilJqueryIsDone(driver);
 		Utils.sel_dropDown(checkOutPage.sel_BillingCountry, countryname);
 	}
 	
 	public void selectState(String stateName){
 		checkOutPage.drp_County.click();
+		Wait.untilJqueryIsDone(driver);
 		Utils.sel_dropDown(checkOutPage.sel_billing_state, stateName);
 	}
 	
@@ -73,6 +77,7 @@ public class CheckOutPageAction {
 	public void selectDeliveryAddress(){
 		if(!checkOutPage.chk_DifferentAdd.isSelected())
 			checkOutPage.chk_DifferentAdd.click();
+			Wait.untilJqueryIsDone(driver);
 			
 	}
 	
@@ -87,6 +92,7 @@ public class CheckOutPageAction {
 	
 	public void clickPlaceorder(){
 		checkOutPage.btn_PlaceOrder.click();
+		Wait.untilJqueryIsDone(driver);
 	}
 	
 
