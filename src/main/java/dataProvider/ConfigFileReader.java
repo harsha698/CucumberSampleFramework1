@@ -76,5 +76,19 @@ public class ConfigFileReader {
 		else if(envName.equalsIgnoreCase("remote")) return EnvironmentType.REMOTE;
 		else throw new RuntimeException("Environment Type Key value in Configuration.properties is not matched : " + envName);
 	}
+	
+	public String getReportConfigPath(){
+		String configpath =  prop.getProperty("reportConfigPath");
+		if(configpath!=null) return configpath;
+		else
+			throw new RuntimeException("report config path is missing from properties file");
+	}
+	
+	public String getTestDataResourcePath(){
+		String testDataResPath = prop.getProperty("testDataResourcePath");
+		if(testDataResPath!=null) return testDataResPath;
+		else
+			throw new RuntimeException("Test Data Resource Path not specified in the Configuration.properties file for the Key:testDataResourcePath");
+	}
 
 }

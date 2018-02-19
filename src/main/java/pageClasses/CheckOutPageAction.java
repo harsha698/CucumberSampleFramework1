@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import pageObjects.CheckOutPage;
+import testDataTypes.Customer;
 import utilities.Utils;
 
 public class CheckOutPageAction {
@@ -57,16 +58,16 @@ public class CheckOutPageAction {
 		Utils.sel_dropDown(checkOutPage.sel_billing_state, stateName);
 	}
 	
-	public void fill_PersonalDetails(){
-		enterFirstName("test1");
-		enterlastName("test2");
-		enterEmail("TestEmail@test.com");
-		enterPhone("1234567890");
-		enterAdress("Line1", "Line 2");
-		enterCity("TestCity");
-		enterZip("12345");
-		selectCountry("Algeria");
-		selectState("Maharashtra");
+	public void fill_PersonalDetails(Customer customer){
+		enterFirstName(customer.firstName);
+		enterlastName(customer.lastName);
+		enterEmail(customer.emailAddress);
+		enterPhone(customer.phoneNumber.home);
+		enterAdress(customer.address.streetAddress1, customer.address.streetAddress2);
+		enterCity(customer.address.city);
+		enterZip(customer.address.postCode);
+		selectCountry(customer.address.country);
+		selectState(customer.address.county);
 	}
 		
 	public void selectDeliveryAddress(){
