@@ -12,7 +12,8 @@ Feature: E2E Testing of online shopping
     And Moves to check out from mini cart
     And enter personal details on checkout page
     And select same delivery address
-    And select payment method as "check" payment
+    And select payment method as check payment
+    And accept TNC
     And click on Place order button
     Then he received an order confirmation page
        
